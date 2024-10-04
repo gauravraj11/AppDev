@@ -15,7 +15,7 @@ const Navbar = () => {
         {/* Centered Links with Icons */}
         <ul className="navbar-links" style={{ flex: "2", display: "flex", justifyContent: "center", gap: "20px", listStyleType: "none" }}>
           <li>
-            <NavLink to="/home" activeClassName="active">
+            <NavLink to="/" activeClassName="active">
               <FaHome style={{ marginRight: "8px" }} /> Home
             </NavLink>
           </li>
