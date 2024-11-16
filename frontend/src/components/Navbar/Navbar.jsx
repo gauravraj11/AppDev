@@ -1,9 +1,10 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import { FaSearch, FaShoppingCart, FaHome, FaInfoCircle, FaUtensils, FaEnvelope } from "react-icons/fa";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -38,10 +39,12 @@ const Navbar = () => {
 
         {/* Right Side Actions */}
         <div className="navbar-actions" style={{ flex: "1", display: "flex", justifyContent: "flex-end", gap: "15px" }}>
+          
           <NavLink to="/search" className="icon"><FaSearch /></NavLink>
           <NavLink to="/cart" className="icon"><FaShoppingCart /></NavLink>
-          <button className="auth-btn">Login</button>
-          <button className="auth-btn signup">Sign Up</button>
+        <button className="auth-btn" onClick={() => navigate('/login')}>Login</button>
+        <button className="auth-btn signup" onClick={() => navigate('/signup')}>Sign Up</button>
+     
         </div>
       </div>
     </nav>

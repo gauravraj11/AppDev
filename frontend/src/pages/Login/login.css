@@ -1,15 +1,15 @@
-.signup-container {
+.login-container {
     width: 100%;
     max-width: 400px;
     margin: 50px auto;
     text-align: center;
   }
   
-  .signup-container h2 {
+  .login-container h2 {
     margin-bottom: 20px;
   }
   
-  .signup-container form input {
+  .login-container form input {
     display: block;
     width: 100%;
     padding: 10px;
@@ -18,7 +18,7 @@
     border-radius: 5px;
   }
   
-  .signup-container form button {
+  .login-container form button {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -28,11 +28,11 @@
     cursor: pointer;
   }
   
-  .signup-container form button:hover {
+  .login-container form button:hover {
     opacity: 0.9;
   }
   
-  .signup-container p span {
+  .login-container p span {
     color: #007bff;
     cursor: pointer;
     text-decoration: underline;
