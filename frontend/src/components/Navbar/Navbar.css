@@ -78,3 +78,23 @@
     color: #fff;
   }
   
+  /* Add this to your navbar.css */
+.navbar-actions .icon {
+  position: relative;
+  font-size: 24px;
+}
+
+.cart-item-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

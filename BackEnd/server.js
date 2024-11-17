@@ -23,7 +23,7 @@ app.use(cors())
 
 // api endpoints
 app.use("/api/user", userRouter)
-// app.use("/api/cart", cartRouter)
+app.use("/api/cart", cartRouter)
 // app.use("/api/order",orderRouter)
 
 

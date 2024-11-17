@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import { FaSearch, FaShoppingCart, FaHome, FaInfoCircle, FaUtensils, FaEnvelope } from "react-icons/fa";
+import { StoreContext } from "../../Context/StoreContext";
 
-const Navbar = () => {
+const Navbar = ({ handleLogout }) => {
+  const { cartItems } = useContext(StoreContext);
   const navigate = useNavigate();
+  // Calculate the total number of items in the cart
+  const getTotalItems = () => {
+    return Object.values(cartItems).reduce((total, itemCount) => total + itemCount, 0);
+  };
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -41,11 +47,40 @@ const Navbar = () => {
         <div className="navbar-actions" style={{ flex: "1", display: "flex", justifyContent: "flex-end", gap: "15px" }}>
           
           <NavLink to="/search" className="icon"><FaSearch /></NavLink>
-          <NavLink to="/cart" className="icon"><FaShoppingCart /></NavLink>
-        <button className="auth-btn" onClick={() => navigate('/login')}>Login</button>
-        <button className="auth-btn signup" onClick={() => navigate('/signup')}>Sign Up</button>
-     
-        </div>
+          {/* Cart Icon with Item Count */}
+          <NavLink to="/cart" className="icon">
+            <FaShoppingCart />
+            {getTotalItems() > 0 && (
+              <span className="cart-item-count">{getTotalItems()}</span>
+            )}
+          </NavLink>
+          <button className="auth-btn logout" onClick={handleLogout}>
+              Logout </button>
+          {/* {!isLoggedIn ? (
+            <>
+              <button
+                className="auth-btn"
+                onClick={() => navigate("/login")}
+              >
+                Login
+              </button>
+              <button
+                className="auth-btn signup"
+                onClick={() => navigate("/signup")}
+              >
+                Sign Up
+              </button>
+            </>
+          ) : (
+            <button
+              className="auth-btn logout"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          )} */}
+
+           </div>
       </div>
     </nav>
   );

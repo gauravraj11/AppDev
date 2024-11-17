@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
-const Login = () => {
+const Login = ({isLoggedIn, setIsLoggedIn }) => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const navigate = useNavigate();
 
@@ -21,6 +21,10 @@ const Login = () => {
       const data = await response.json();
       if (data.success) {
         alert('Login Successful');
+        setIsLoggedIn(true);
+        console.log(isLoggedIn);
+        
+        localStorage.setItem('token', data.token); // Save token in localStorage
         navigate('/');
       } else {
         alert(data.message || 'Login Failed');

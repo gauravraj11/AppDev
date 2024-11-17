@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Signup.css';
 
-const Signup = () => {
+const Signup = ({ setIsLoggedIn }) => {
   const [formData, setFormData] = useState({
     username: '',
     number: '',
@@ -13,6 +13,8 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
+    console.log(e.target.name);
+    
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -21,13 +23,21 @@ const Signup = () => {
     try {
       const response = await fetch('http://localhost:9000/api/user/register', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'token1': "fhfhhhh" },
         body: JSON.stringify(formData)
       });
+
+      console.log(response);
+      
       const data = await response.json();
+      console.log(data);
+      
       if (data.success) {
         alert('Registration Successful');
-        navigate('/login');
+        setIsLoggedIn(true);
+        localStorage.setItem('token', data.token); // Save token in localStorage
+        navigate('/');
+        
       } else {
         alert(data.message || 'Registration Failed');
       }
