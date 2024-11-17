@@ -15,6 +15,7 @@ import Contact from './pages/Contact/Contact';
 function App() {
   
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
   const handleLogout = () => {
     setIsLoggedIn(false);
     localStorage.removeItem('token'); // Clear token from localStorage
