@@ -66,5 +66,24 @@ const registerUser = async (req,res) => {
     }
 }
 
-module.exports = {loginUser, registerUser};
+const getUserProfile = async (req, res) => {
+    try {
+      const token = req.headers.authorization.split(" ")[1];
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const user = await userModel.findById(decoded.id).select("-password"); // Exclude password
+  
+      if (!user) {
+        return res.json({ success: false, message: "User not found" });
+      }
+  
+      res.json({ success: true, user });
+    } catch (error) {
+      console.error(error);
+      res.json({ success: false, message: "Invalid token or server error" });
+    }
+  };
+  
+
+
+module.exports = {loginUser, registerUser, getUserProfile};
   

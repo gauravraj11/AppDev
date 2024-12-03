@@ -31,3 +31,14 @@
     margin-top: 20px;
   }
   
+  .cart-item input[type="checkbox"] {
+    margin-right: 15px;
+    transform: scale(1.2);
+    cursor: pointer;
+  }
+  
+  .buy-now-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
